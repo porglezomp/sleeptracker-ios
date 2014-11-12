@@ -13,6 +13,7 @@
 		3C14B81B1A12FF9D009F6F30 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C14B81A1A12FF9D009F6F30 /* Images.xcassets */; };
 		3C14B81E1A12FF9D009F6F30 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C14B81C1A12FF9D009F6F30 /* LaunchScreen.xib */; };
 		3C14B82A1A12FF9D009F6F30 /* Sleep_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C14B8291A12FF9D009F6F30 /* Sleep_TrackerTests.swift */; };
+		3C14B8351A12FFB0009F6F30 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C14B8341A12FFB0009F6F30 /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,8 @@
 		3C14B8231A12FF9D009F6F30 /* Sleep TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sleep TrackerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C14B8281A12FF9D009F6F30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C14B8291A12FF9D009F6F30 /* Sleep_TrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sleep_TrackerTests.swift; sourceTree = "<group>"; };
+		3C14B8331A12FFB0009F6F30 /* Sleep Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Sleep Tracker.entitlements"; sourceTree = "<group>"; };
+		3C14B8341A12FFB0009F6F30 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C14B8351A12FFB0009F6F30 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +63,7 @@
 		3C14B8051A12FF9D009F6F30 = {
 			isa = PBXGroup;
 			children = (
+				3C14B8341A12FFB0009F6F30 /* HealthKit.framework */,
 				3C14B8101A12FF9D009F6F30 /* Sleep Tracker */,
 				3C14B8261A12FF9D009F6F30 /* Sleep TrackerTests */,
 				3C14B80F1A12FF9D009F6F30 /* Products */,
@@ -77,6 +82,7 @@
 		3C14B8101A12FF9D009F6F30 /* Sleep Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				3C14B8331A12FFB0009F6F30 /* Sleep Tracker.entitlements */,
 				3C14B8131A12FF9D009F6F30 /* AppDelegate.swift */,
 				3C14B8151A12FF9D009F6F30 /* ViewController.swift */,
 				3C14B8171A12FF9D009F6F30 /* Main.storyboard */,
@@ -161,6 +167,12 @@
 				TargetAttributes = {
 					3C14B80D1A12FF9D009F6F30 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = RAK7EVK984;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					3C14B8221A12FF9D009F6F30 = {
 						CreatedOnToolsVersion = 6.1;
@@ -336,9 +348,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Sleep Tracker/Sleep Tracker.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Sleep Tracker/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -346,9 +363,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Sleep Tracker/Sleep Tracker.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Sleep Tracker/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -405,6 +427,7 @@
 				3C14B82F1A12FF9D009F6F30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3C14B8301A12FF9D009F6F30 /* Build configuration list for PBXNativeTarget "Sleep TrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +436,7 @@
 				3C14B8321A12FF9D009F6F30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

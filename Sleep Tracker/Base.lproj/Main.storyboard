@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Sleep_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,8 +16,116 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asleep" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="32" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U4L-qJ-7qD">
+                                <rect key="frame" x="16" y="126" width="568" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="AKD-oR-lJA"/>
+                                    <constraint firstAttribute="width" constant="568" id="EwG-oF-5Bz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="EwG-oF-5Bz"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I94-GI-5gt">
+                                <rect key="frame" x="16" y="194" width="568" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="hci-lx-GiU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <state key="normal" title="Bed">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="hci-lx-GiU"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="toggleInBed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="47Y-NK-FOl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiR-FC-Ga7">
+                                <rect key="frame" x="16" y="265" width="568" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="PCw-EA-9lk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <state key="normal" title="Sleep">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PCw-EA-9lk"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="toggleSleeping:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rML-P3-i0a"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Bed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="32" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E1z-RR-eAV">
+                                <rect key="frame" x="16" y="58" width="568" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="1lH-yV-gLA"/>
+                                    <constraint firstAttribute="width" constant="568" id="rxZ-wZ-Mtl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="rxZ-wZ-Mtl"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="E1z-RR-eAV" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="38" id="2CT-pK-ATk"/>
+                            <constraint firstAttribute="centerX" secondItem="E1z-RR-eAV" secondAttribute="centerX" id="8ua-7f-ASM"/>
+                            <constraint firstItem="aiR-FC-Ga7" firstAttribute="top" secondItem="I94-GI-5gt" secondAttribute="bottom" constant="8" symbolic="YES" id="CAU-PJ-LmL"/>
+                            <constraint firstItem="I94-GI-5gt" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="IBs-AP-F02"/>
+                            <constraint firstItem="I94-GI-5gt" firstAttribute="top" secondItem="U4L-qJ-7qD" secondAttribute="bottom" constant="8" symbolic="YES" id="J2K-G5-xpI"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="I94-GI-5gt" secondAttribute="bottom" constant="439" id="Mfe-ql-nc4"/>
+                            <constraint firstItem="aiR-FC-Ga7" firstAttribute="leading" secondItem="I94-GI-5gt" secondAttribute="leading" id="Mp7-e1-v7c"/>
+                            <constraint firstItem="aiR-FC-Ga7" firstAttribute="centerX" secondItem="I94-GI-5gt" secondAttribute="centerX" id="PBV-E0-VST"/>
+                            <constraint firstItem="aiR-FC-Ga7" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="XXd-3I-fYk"/>
+                            <constraint firstItem="U4L-qJ-7qD" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="136" id="Z19-RF-ep5"/>
+                            <constraint firstItem="E1z-RR-eAV" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Z6F-V3-aOg"/>
+                            <constraint firstItem="U4L-qJ-7qD" firstAttribute="centerX" secondItem="I94-GI-5gt" secondAttribute="centerX" id="eXk-yr-e91"/>
+                            <constraint firstItem="I94-GI-5gt" firstAttribute="centerX" secondItem="U4L-qJ-7qD" secondAttribute="centerX" id="fVY-yp-Rhb"/>
+                            <constraint firstItem="I94-GI-5gt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="joL-FM-pOP"/>
+                            <constraint firstItem="U4L-qJ-7qD" firstAttribute="top" secondItem="E1z-RR-eAV" secondAttribute="bottom" constant="8" id="lZZ-kM-uhv"/>
+                            <constraint firstItem="aiR-FC-Ga7" firstAttribute="leading" secondItem="I94-GI-5gt" secondAttribute="leading" id="n4i-rj-j4O"/>
+                            <constraint firstItem="aiR-FC-Ga7" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="op8-Ae-fUc"/>
+                            <constraint firstItem="U4L-qJ-7qD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="pQW-ex-8yk"/>
+                            <constraint firstItem="I94-GI-5gt" firstAttribute="top" secondItem="U4L-qJ-7qD" secondAttribute="bottom" constant="8" id="scA-dP-f3f"/>
+                            <constraint firstItem="E1z-RR-eAV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="vwx-xm-FoS"/>
+                            <constraint firstItem="U4L-qJ-7qD" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="w2h-93-b0W"/>
+                            <constraint firstItem="I94-GI-5gt" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="wkI-zw-6Q8"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Z19-RF-ep5"/>
+                                <exclude reference="J2K-G5-xpI"/>
+                                <exclude reference="fVY-yp-Rhb"/>
+                                <exclude reference="Mp7-e1-v7c"/>
+                                <exclude reference="n4i-rj-j4O"/>
+                                <exclude reference="Mfe-ql-nc4"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="bedButton" destination="I94-GI-5gt" id="uTs-lv-bFg"/>
+                        <outlet property="sleepButton" destination="aiR-FC-Ga7" id="Grg-HJ-zBu"/>
+                        <outlet property="timeAsleepLabel" destination="U4L-qJ-7qD" id="HNk-GK-Hd8"/>
+                        <outlet property="timeInBedLabel" destination="E1z-RR-eAV" id="Ys9-1T-TY7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
