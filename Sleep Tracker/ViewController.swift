@@ -9,12 +9,15 @@
 import UIKit
 import HealthKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SleepReviewResponder {
     var defaults: NSUserDefaults!
     var inBed = false
     var asleep = false
     var startTimeInBed: NSDate?
     var startTimeAsleep: NSDate?
+    var endTimeAsleep: NSDate?
+    var healthKitStore: HKHealthStore?
+    lazy var categoryType: HKObjectType = { HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis) }()
     
     @IBOutlet weak var timeInBedLabel: UILabel!
     @IBOutlet weak var timeAsleepLabel: UILabel!
@@ -22,7 +25,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var sleepButton: UIButton!
     
     override func viewDidLoad() {
-
         super.viewDidLoad()
         
         // Make a convenience variable for UserDefaults
@@ -39,8 +41,55 @@ class ViewController: UIViewController {
         startTimeInBed = defaults.objectForKey("Start In Bed") as NSDate?
         startTimeAsleep = defaults.objectForKey("Start Asleep") as NSDate?
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showErrorIfInvalid", name: UIApplicationWillEnterForegroundNotification, object: nil)
+        
+        if HKHealthStore.isHealthDataAvailable() {
+            healthKitStore = HKHealthStore()
+            healthKitStore!.requestAuthorizationToShareTypes(
+                NSSet(object: categoryType),
+                readTypes: NSSet(),
+                completion: { (success: Bool, error: NSError!) -> Void in Void() })
+        } else {
+            println("Sorry, healthkit is unavailable!")
+        }
+        
         // This stores UserDefaults and updates the labels in the UI
         updateStatus()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        showErrorIfInvalid()
+    }
+    
+    func showErrorIfInvalid() {
+        if healthKitStore?.authorizationStatusForType(categoryType) != HKAuthorizationStatus.SharingAuthorized {
+            self.performSegueWithIdentifier("errorSegue", sender: self)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "errorSegue" {
+            let vc = segue.destinationViewController as ErrorViewController
+            vc.delegate = self
+        } else if segue.identifier == "reviewSleepSegue" {
+            let vc = segue.destinationViewController as ReviewSleepViewController
+            vc.delegate = self
+        }
+    }
+    
+    @IBAction func returnFromError(segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func returnFromSleepReview(segue: UIStoryboardSegue) {
+        println("Okay, we're back!")
+        let sample = HKCategorySample(
+            type: HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis),
+            value: HKCategoryValueSleepAnalysis.Asleep.rawValue,
+            startDate: startTimeAsleep,
+            endDate: endTimeAsleep
+        )
+        saveSample(sample)
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,11 +106,12 @@ class ViewController: UIViewController {
             let start = startTimeInBed!
             let sample = HKCategorySample(
                 type: HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis),
-                value: HKCategoryValueSleepAnalysis.Asleep.rawValue,
+                value: HKCategoryValueSleepAnalysis.InBed.rawValue,
                 startDate: start,
                 endDate: end
             )
-            println("In bed for \(sample)")
+            
+            saveSample(sample)
         } else {
             // The user has gotten into bed
             inBed = true
@@ -74,21 +124,22 @@ class ViewController: UIViewController {
         if self.asleep {
             // The user just woke up
             asleep = false
-            let end = NSDate()
-            let start = startTimeAsleep!
-            let sample = HKCategorySample(
-                type: HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis),
-                value: HKCategoryValueSleepAnalysis.Asleep.rawValue,
-                startDate: start,
-                endDate: end
-            )
-            println("Asleep for \(sample)")
+            endTimeAsleep = NSDate()
+            self.performSegueWithIdentifier("reviewSleepSegue", sender: self)
         } else {
             // The user is going to sleep
             asleep = true
             startTimeAsleep = NSDate()
         }
         updateStatus()
+    }
+    
+    func saveSample(sample: HKCategorySample) {
+        if (healthKitStore != nil) {
+            if healthKitStore!.authorizationStatusForType(categoryType) == HKAuthorizationStatus.SharingAuthorized {
+                self.healthKitStore?.saveObject(sample, withCompletion: { (success: Bool, error: NSError!) -> Void in Void() })
+            }
+        }
     }
     
     func updateStatus() {

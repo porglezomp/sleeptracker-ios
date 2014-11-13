@@ -14,6 +14,8 @@
 		3C14B81E1A12FF9D009F6F30 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C14B81C1A12FF9D009F6F30 /* LaunchScreen.xib */; };
 		3C14B82A1A12FF9D009F6F30 /* Sleep_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C14B8291A12FF9D009F6F30 /* Sleep_TrackerTests.swift */; };
 		3C14B8351A12FFB0009F6F30 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C14B8341A12FFB0009F6F30 /* HealthKit.framework */; };
+		3C2DFEAA1A1447FB005DE22D /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DFEA91A1447FB005DE22D /* ErrorViewController.swift */; };
+		3C2DFEAC1A1457DB005DE22D /* ReviewSleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DFEAB1A1457DB005DE22D /* ReviewSleepViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,8 @@
 		3C14B8291A12FF9D009F6F30 /* Sleep_TrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sleep_TrackerTests.swift; sourceTree = "<group>"; };
 		3C14B8331A12FFB0009F6F30 /* Sleep Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Sleep Tracker.entitlements"; sourceTree = "<group>"; };
 		3C14B8341A12FFB0009F6F30 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		3C2DFEA91A1447FB005DE22D /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
+		3C2DFEAB1A1457DB005DE22D /* ReviewSleepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewSleepViewController.swift; path = ../ReviewSleepViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +88,10 @@
 			children = (
 				3C14B8331A12FFB0009F6F30 /* Sleep Tracker.entitlements */,
 				3C14B8131A12FF9D009F6F30 /* AppDelegate.swift */,
+				3C2DFEAB1A1457DB005DE22D /* ReviewSleepViewController.swift */,
 				3C14B8151A12FF9D009F6F30 /* ViewController.swift */,
 				3C14B8171A12FF9D009F6F30 /* Main.storyboard */,
+				3C2DFEA91A1447FB005DE22D /* ErrorViewController.swift */,
 				3C14B81A1A12FF9D009F6F30 /* Images.xcassets */,
 				3C14B81C1A12FF9D009F6F30 /* LaunchScreen.xib */,
 				3C14B8111A12FF9D009F6F30 /* Supporting Files */,
@@ -225,6 +231,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C14B8161A12FF9D009F6F30 /* ViewController.swift in Sources */,
+				3C2DFEAC1A1457DB005DE22D /* ReviewSleepViewController.swift in Sources */,
+				3C2DFEAA1A1447FB005DE22D /* ErrorViewController.swift in Sources */,
 				3C14B8141A12FF9D009F6F30 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

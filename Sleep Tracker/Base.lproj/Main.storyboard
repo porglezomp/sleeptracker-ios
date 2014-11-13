@@ -125,10 +125,127 @@
                         <outlet property="sleepButton" destination="aiR-FC-Ga7" id="Grg-HJ-zBu"/>
                         <outlet property="timeAsleepLabel" destination="U4L-qJ-7qD" id="HNk-GK-Hd8"/>
                         <outlet property="timeInBedLabel" destination="E1z-RR-eAV" id="Ys9-1T-TY7"/>
+                        <segue destination="bHd-mq-Xjc" kind="presentation" identifier="errorSegue" id="btf-k2-7eO"/>
+                        <segue destination="8ma-qZ-8VO" kind="showDetail" identifier="reviewSleepSegue" id="xpp-gx-Tcg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="321" y="234"/>
+        </scene>
+        <!--Review Sleep View Controller-->
+        <scene sceneID="mZ9-wT-kWm">
+            <objects>
+                <viewController id="8ma-qZ-8VO" customClass="ReviewSleepViewController" customModule="Sleep_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HUk-6d-J0I"/>
+                        <viewControllerLayoutGuide type="bottom" id="z8w-OS-v6d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="86K-30-H8u">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Approximately how many minutes did it take you to fall asleep last night?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdB-8v-alV">
+                                <rect key="frame" x="16" y="44" width="568" height="77"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aK2-aA-981">
+                                <rect key="frame" x="237" y="184" width="126" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="This many">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitMinutes:" destination="8ma-qZ-8VO" eventType="touchUpInside" id="mNw-e6-qQp"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20" borderStyle="roundedRect" textAlignment="center" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="TeR-9X-qwx">
+                                <rect key="frame" x="263" y="146" width="74" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="3Wi-vv-0lY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8ma-qZ-8VO" id="4ap-Wm-RDd"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AdB-8v-alV" firstAttribute="top" secondItem="HUk-6d-J0I" secondAttribute="bottom" constant="24" id="8PO-Fe-PPi"/>
+                            <constraint firstAttribute="centerX" secondItem="TeR-9X-qwx" secondAttribute="centerX" id="CgF-E8-JrE"/>
+                            <constraint firstItem="AdB-8v-alV" firstAttribute="trailing" secondItem="86K-30-H8u" secondAttribute="trailingMargin" id="Chl-Yr-W8K"/>
+                            <constraint firstItem="TeR-9X-qwx" firstAttribute="top" secondItem="AdB-8v-alV" secondAttribute="bottom" constant="25" id="Dj8-Eo-VUz"/>
+                            <constraint firstAttribute="centerY" secondItem="TeR-9X-qwx" secondAttribute="centerY" id="HRA-oo-ag2"/>
+                            <constraint firstItem="aK2-aA-981" firstAttribute="top" secondItem="TeR-9X-qwx" secondAttribute="bottom" constant="8" id="IVS-VG-zE8"/>
+                            <constraint firstItem="AdB-8v-alV" firstAttribute="leading" secondItem="86K-30-H8u" secondAttribute="leadingMargin" id="LcC-mP-hXV"/>
+                            <constraint firstAttribute="centerX" secondItem="aK2-aA-981" secondAttribute="centerX" id="Qbd-U1-9QC"/>
+                            <constraint firstAttribute="centerY" secondItem="aK2-aA-981" secondAttribute="centerY" id="nOl-bL-UXa"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="HRA-oo-ag2"/>
+                                <exclude reference="nOl-bL-UXa"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="minutesField" destination="TeR-9X-qwx" id="gej-1s-hRZ"/>
+                        <outlet property="submitButton" destination="aK2-aA-981" id="1rl-2V-jzQ"/>
+                        <segue destination="V6J-u9-IGH" kind="unwind" identifier="returnFromSleepReview" unwindAction="returnFromSleepReview:" id="wpj-Z4-PX1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B8E-pq-94E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="V6J-u9-IGH" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1020" y="234"/>
+        </scene>
+        <!--Health Kit Error-->
+        <scene sceneID="SOg-OK-0Y5">
+            <objects>
+                <viewController title="Health Kit Error" id="bHd-mq-Xjc" customClass="ErrorViewController" customModule="Sleep_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oII-fH-3lw"/>
+                        <viewControllerLayoutGuide type="bottom" id="cKw-8A-Pd1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m99-EJ-Snw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please grant access in settings to continue using it" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="1" translatesAutoresizingMaskIntoConstraints="NO" id="k1l-gr-FvE">
+                                <rect key="frame" x="16" y="122" width="568" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app requires HealthKit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="1" translatesAutoresizingMaskIntoConstraints="NO" id="JCg-GM-kmW">
+                                <rect key="frame" x="16" y="45" width="568" height="58"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JCg-GM-kmW" firstAttribute="leading" secondItem="m99-EJ-Snw" secondAttribute="leadingMargin" id="8Z6-zw-iuE"/>
+                            <constraint firstItem="JCg-GM-kmW" firstAttribute="trailing" secondItem="m99-EJ-Snw" secondAttribute="trailingMargin" id="JrZ-UY-Wgm"/>
+                            <constraint firstItem="k1l-gr-FvE" firstAttribute="top" secondItem="oII-fH-3lw" secondAttribute="bottom" constant="102" id="Vzd-c1-Ghf"/>
+                            <constraint firstItem="k1l-gr-FvE" firstAttribute="trailing" secondItem="m99-EJ-Snw" secondAttribute="trailingMargin" id="WZZ-1G-ARN"/>
+                            <constraint firstItem="JCg-GM-kmW" firstAttribute="top" secondItem="oII-fH-3lw" secondAttribute="bottom" constant="25" id="gMt-39-qhc"/>
+                            <constraint firstItem="k1l-gr-FvE" firstAttribute="leading" secondItem="m99-EJ-Snw" secondAttribute="leadingMargin" id="xtD-4o-gMm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="axa-Te-IGC" kind="unwind" identifier="returnFromError" unwindAction="returnFromError:" id="4VU-Qp-IBd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MlP-BP-ZH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="axa-Te-IGC" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="321" y="977"/>
         </scene>
     </scenes>
 </document>
