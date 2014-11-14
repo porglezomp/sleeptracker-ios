@@ -184,12 +184,20 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please estimate:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="1" translatesAutoresizingMaskIntoConstraints="NO" id="gIj-L7-Jjk">
+                                <rect key="frame" x="228" y="72" width="145" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="z8w-OS-v6d" firstAttribute="top" secondItem="Mrw-Ar-A1i" secondAttribute="bottom" id="4Sn-jD-deo"/>
+                            <constraint firstAttribute="centerX" secondItem="gIj-L7-Jjk" secondAttribute="centerX" id="64t-Ia-Qas"/>
                             <constraint firstItem="AdB-8v-alV" firstAttribute="top" secondItem="HUk-6d-J0I" secondAttribute="bottom" constant="76" id="8PO-Fe-PPi"/>
                             <constraint firstItem="AdB-8v-alV" firstAttribute="trailing" secondItem="86K-30-H8u" secondAttribute="trailingMargin" id="Chl-Yr-W8K"/>
+                            <constraint firstItem="AdB-8v-alV" firstAttribute="top" secondItem="gIj-L7-Jjk" secondAttribute="bottom" id="Go3-QB-uHg"/>
                             <constraint firstItem="voE-PY-C5i" firstAttribute="leading" secondItem="86K-30-H8u" secondAttribute="leading" id="LBP-cN-nFy"/>
                             <constraint firstItem="AdB-8v-alV" firstAttribute="leading" secondItem="86K-30-H8u" secondAttribute="leadingMargin" id="LcC-mP-hXV"/>
                             <constraint firstAttribute="trailing" secondItem="Mrw-Ar-A1i" secondAttribute="trailing" id="ORb-AS-J7B"/>
@@ -218,7 +226,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8E-pq-94E" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="V6J-u9-IGH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1020" y="234"/>
+            <point key="canvasLocation" x="1015" y="277"/>
         </scene>
         <!--Health Kit Error-->
         <scene sceneID="SOg-OK-0Y5">
