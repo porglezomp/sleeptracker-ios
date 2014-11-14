@@ -18,9 +18,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asleep" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="32" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U4L-qJ-7qD">
-                                <rect key="frame" x="16" y="126" width="568" height="60"/>
+                                <rect key="frame" x="16" y="90" width="568" height="54"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="AKD-oR-lJA"/>
+                                    <constraint firstAttribute="height" constant="54" id="AKD-oR-lJA"/>
                                     <constraint firstAttribute="width" constant="568" id="EwG-oF-5Bz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
@@ -32,28 +32,11 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I94-GI-5gt">
-                                <rect key="frame" x="16" y="194" width="568" height="63"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="144" id="hci-lx-GiU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                <state key="normal" title="Bed">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="hci-lx-GiU"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="toggleInBed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="47Y-NK-FOl"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiR-FC-Ga7">
-                                <rect key="frame" x="16" y="265" width="568" height="63"/>
+                                <rect key="frame" x="16" y="526" width="568" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="144" id="PCw-EA-9lk"/>
+                                    <constraint firstAttribute="height" constant="54" id="dcx-96-bjk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <state key="normal" title="Sleep">
@@ -69,9 +52,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Bed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="32" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E1z-RR-eAV">
-                                <rect key="frame" x="16" y="58" width="568" height="60"/>
+                                <rect key="frame" x="16" y="28" width="568" height="54"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="1lH-yV-gLA"/>
+                                    <constraint firstAttribute="height" constant="54" id="1lH-yV-gLA"/>
                                     <constraint firstAttribute="width" constant="568" id="rxZ-wZ-Mtl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
@@ -83,16 +66,36 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I94-GI-5gt">
+                                <rect key="frame" x="16" y="464" width="568" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="0on-pM-TFg"/>
+                                    <constraint firstAttribute="width" constant="144" id="hci-lx-GiU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <state key="normal" title="Bed">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="hci-lx-GiU"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="toggleInBed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="47Y-NK-FOl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="E1z-RR-eAV" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="38" id="2CT-pK-ATk"/>
+                            <constraint firstItem="E1z-RR-eAV" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="2CT-pK-ATk"/>
                             <constraint firstAttribute="centerX" secondItem="E1z-RR-eAV" secondAttribute="centerX" id="8ua-7f-ASM"/>
                             <constraint firstItem="aiR-FC-Ga7" firstAttribute="top" secondItem="I94-GI-5gt" secondAttribute="bottom" constant="8" symbolic="YES" id="CAU-PJ-LmL"/>
                             <constraint firstItem="I94-GI-5gt" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="IBs-AP-F02"/>
                             <constraint firstItem="I94-GI-5gt" firstAttribute="top" secondItem="U4L-qJ-7qD" secondAttribute="bottom" constant="8" symbolic="YES" id="J2K-G5-xpI"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="I94-GI-5gt" secondAttribute="bottom" constant="439" id="Mfe-ql-nc4"/>
                             <constraint firstItem="aiR-FC-Ga7" firstAttribute="leading" secondItem="I94-GI-5gt" secondAttribute="leading" id="Mp7-e1-v7c"/>
+                            <constraint firstAttribute="bottom" secondItem="aiR-FC-Ga7" secondAttribute="bottom" constant="20" symbolic="YES" id="MwA-w1-QLg"/>
                             <constraint firstItem="aiR-FC-Ga7" firstAttribute="centerX" secondItem="I94-GI-5gt" secondAttribute="centerX" id="PBV-E0-VST"/>
                             <constraint firstItem="aiR-FC-Ga7" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="XXd-3I-fYk"/>
                             <constraint firstItem="U4L-qJ-7qD" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="136" id="Z19-RF-ep5"/>
@@ -112,9 +115,12 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Z19-RF-ep5"/>
+                                <exclude reference="eXk-yr-e91"/>
                                 <exclude reference="J2K-G5-xpI"/>
                                 <exclude reference="fVY-yp-Rhb"/>
+                                <exclude reference="scA-dP-f3f"/>
                                 <exclude reference="Mp7-e1-v7c"/>
+                                <exclude reference="PBV-E0-VST"/>
                                 <exclude reference="n4i-rj-j4O"/>
                                 <exclude reference="Mfe-ql-nc4"/>
                             </mask>
@@ -145,57 +151,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Approximately how many minutes did it take you to fall asleep last night?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="1" translatesAutoresizingMaskIntoConstraints="NO" id="AdB-8v-alV">
-                                <rect key="frame" x="16" y="44" width="568" height="77"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mrw-Ar-A1i">
+                                <rect key="frame" x="0.0" y="384" width="600" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="5dZ-jB-oYI"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="8ma-qZ-8VO" id="Bic-JE-Knh"/>
+                                    <outlet property="delegate" destination="8ma-qZ-8VO" id="exa-po-GN3"/>
+                                </connections>
+                            </pickerView>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voE-PY-C5i">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Review" id="IY6-jn-rS4">
+                                        <barButtonItem key="leftBarButtonItem" title="Discard" id="7fm-Lp-DFC">
+                                            <connections>
+                                                <action selector="discardReview:" destination="8ma-qZ-8VO" id="cBh-f2-Pdy"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Submit" id="Pwf-qd-TLZ">
+                                            <connections>
+                                                <action selector="submitMinutes:" destination="8ma-qZ-8VO" id="Z9e-tM-0Oe"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How quickly did you fall asleep?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="1" translatesAutoresizingMaskIntoConstraints="NO" id="AdB-8v-alV">
+                                <rect key="frame" x="16" y="96" width="568" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aK2-aA-981">
-                                <rect key="frame" x="237" y="184" width="126" height="46"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="This many">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="submitMinutes:" destination="8ma-qZ-8VO" eventType="touchUpInside" id="mNw-e6-qQp"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20" borderStyle="roundedRect" textAlignment="center" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="TeR-9X-qwx">
-                                <rect key="frame" x="263" y="146" width="74" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="74" id="3Wi-vv-0lY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="8ma-qZ-8VO" id="4ap-Wm-RDd"/>
-                                </connections>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AdB-8v-alV" firstAttribute="top" secondItem="HUk-6d-J0I" secondAttribute="bottom" constant="24" id="8PO-Fe-PPi"/>
-                            <constraint firstAttribute="centerX" secondItem="TeR-9X-qwx" secondAttribute="centerX" id="CgF-E8-JrE"/>
+                            <constraint firstItem="z8w-OS-v6d" firstAttribute="top" secondItem="Mrw-Ar-A1i" secondAttribute="bottom" id="4Sn-jD-deo"/>
+                            <constraint firstItem="AdB-8v-alV" firstAttribute="top" secondItem="HUk-6d-J0I" secondAttribute="bottom" constant="76" id="8PO-Fe-PPi"/>
                             <constraint firstItem="AdB-8v-alV" firstAttribute="trailing" secondItem="86K-30-H8u" secondAttribute="trailingMargin" id="Chl-Yr-W8K"/>
-                            <constraint firstItem="TeR-9X-qwx" firstAttribute="top" secondItem="AdB-8v-alV" secondAttribute="bottom" constant="25" id="Dj8-Eo-VUz"/>
-                            <constraint firstAttribute="centerY" secondItem="TeR-9X-qwx" secondAttribute="centerY" id="HRA-oo-ag2"/>
-                            <constraint firstItem="aK2-aA-981" firstAttribute="top" secondItem="TeR-9X-qwx" secondAttribute="bottom" constant="8" id="IVS-VG-zE8"/>
+                            <constraint firstItem="voE-PY-C5i" firstAttribute="leading" secondItem="86K-30-H8u" secondAttribute="leading" id="LBP-cN-nFy"/>
                             <constraint firstItem="AdB-8v-alV" firstAttribute="leading" secondItem="86K-30-H8u" secondAttribute="leadingMargin" id="LcC-mP-hXV"/>
-                            <constraint firstAttribute="centerX" secondItem="aK2-aA-981" secondAttribute="centerX" id="Qbd-U1-9QC"/>
-                            <constraint firstAttribute="centerY" secondItem="aK2-aA-981" secondAttribute="centerY" id="nOl-bL-UXa"/>
+                            <constraint firstAttribute="trailing" secondItem="Mrw-Ar-A1i" secondAttribute="trailing" id="ORb-AS-J7B"/>
+                            <constraint firstItem="AdB-8v-alV" firstAttribute="centerX" secondItem="voE-PY-C5i" secondAttribute="centerX" id="cWv-GA-AuD"/>
+                            <constraint firstItem="Mrw-Ar-A1i" firstAttribute="leading" secondItem="86K-30-H8u" secondAttribute="leading" id="dgp-xB-7tp"/>
+                            <constraint firstItem="AdB-8v-alV" firstAttribute="centerX" secondItem="Mrw-Ar-A1i" secondAttribute="centerX" id="qEM-l6-vjG"/>
+                            <constraint firstItem="AdB-8v-alV" firstAttribute="top" secondItem="voE-PY-C5i" secondAttribute="bottom" constant="32" id="tuK-yO-YGJ"/>
+                            <constraint firstItem="AdB-8v-alV" firstAttribute="top" secondItem="86K-30-H8u" secondAttribute="top" constant="96" id="wgH-WT-hK6"/>
+                            <constraint firstAttribute="trailing" secondItem="voE-PY-C5i" secondAttribute="trailing" id="zNa-S2-lTf"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="HRA-oo-ag2"/>
-                                <exclude reference="nOl-bL-UXa"/>
+                                <exclude reference="8PO-Fe-PPi"/>
+                                <exclude reference="LcC-mP-hXV"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="minutesField" destination="TeR-9X-qwx" id="gej-1s-hRZ"/>
-                        <outlet property="submitButton" destination="aK2-aA-981" id="1rl-2V-jzQ"/>
+                        <outlet property="discardButton" destination="7fm-Lp-DFC" id="Dzy-lq-0UT"/>
+                        <outlet property="picker" destination="Mrw-Ar-A1i" id="HJn-uz-B2g"/>
+                        <outlet property="submitButton" destination="Pwf-qd-TLZ" id="iXS-c3-vHt"/>
                         <segue destination="V6J-u9-IGH" kind="unwind" identifier="returnFromSleepReview" unwindAction="returnFromSleepReview:" id="wpj-Z4-PX1"/>
+                        <segue destination="V6J-u9-IGH" kind="unwind" identifier="discardSleepReview" unwindAction="discardSleepReview:" id="RgO-fS-eID"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8E-pq-94E" userLabel="First Responder" sceneMemberID="firstResponder"/>

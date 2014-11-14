@@ -17,6 +17,7 @@ class ViewController: UIViewController, SleepReviewResponder {
     var startTimeAsleep: NSDate?
     var endTimeAsleep: NSDate?
     var healthKitStore: HKHealthStore?
+    weak var healthkitErrorViewController: ErrorViewController!
     lazy var categoryType: HKObjectType = { HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis) }()
     
     @IBOutlet weak var timeInBedLabel: UILabel!
@@ -48,7 +49,9 @@ class ViewController: UIViewController, SleepReviewResponder {
             healthKitStore!.requestAuthorizationToShareTypes(
                 NSSet(object: categoryType),
                 readTypes: NSSet(),
-                completion: { (success: Bool, error: NSError!) -> Void in Void() })
+                completion: { (success: Bool, error: NSError!) -> Void in
+                    self.showErrorIfInvalid()
+                })
         } else {
             println("Sorry, healthkit is unavailable!")
         }
@@ -63,15 +66,17 @@ class ViewController: UIViewController, SleepReviewResponder {
     }
     
     func showErrorIfInvalid() {
-        if healthKitStore?.authorizationStatusForType(categoryType) != HKAuthorizationStatus.SharingAuthorized {
+        if healthKitStore!.authorizationStatusForType(categoryType) == HKAuthorizationStatus.SharingDenied {
             self.performSegueWithIdentifier("errorSegue", sender: self)
+        } else if healthkitErrorViewController? != nil {
+            healthkitErrorViewController.performSegueWithIdentifier("returnFromError", sender: self)
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "errorSegue" {
-            let vc = segue.destinationViewController as ErrorViewController
-            vc.delegate = self
+            healthkitErrorViewController = segue.destinationViewController as ErrorViewController
+            healthkitErrorViewController.delegate = self
         } else if segue.identifier == "reviewSleepSegue" {
             let vc = segue.destinationViewController as ReviewSleepViewController
             vc.delegate = self
@@ -79,10 +84,10 @@ class ViewController: UIViewController, SleepReviewResponder {
     }
     
     @IBAction func returnFromError(segue: UIStoryboardSegue) {
+        healthkitErrorViewController = nil
     }
     
     @IBAction func returnFromSleepReview(segue: UIStoryboardSegue) {
-        println("Okay, we're back!")
         let sample = HKCategorySample(
             type: HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis),
             value: HKCategoryValueSleepAnalysis.Asleep.rawValue,
@@ -90,6 +95,9 @@ class ViewController: UIViewController, SleepReviewResponder {
             endDate: endTimeAsleep
         )
         saveSample(sample)
+    }
+    
+    @IBAction func discardSleepReview(segue: UIStoryboardSegue) {
     }
 
     override func didReceiveMemoryWarning() {
