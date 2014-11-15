@@ -25,6 +25,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <state key="normal" title="Sleep">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -59,6 +60,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <state key="normal" title="Bed">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -174,6 +176,11 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIS-RL-GOk">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Review" id="fEf-rT-aXS">
                                         <barButtonItem key="leftBarButtonItem" title="Discard" id="qiv-Ui-srM">
@@ -277,7 +284,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WPT-rQ-yhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="adB-6o-vQb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1039" y="-63"/>
+            <point key="canvasLocation" x="1009" y="243"/>
         </scene>
         <!--Review Sleep View Controller-->
         <scene sceneID="mZ9-wT-kWm">
@@ -301,23 +308,6 @@
                                     <outlet property="delegate" destination="8ma-qZ-8VO" id="exa-po-GN3"/>
                                 </connections>
                             </pickerView>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voE-PY-C5i">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="Review" id="IY6-jn-rS4">
-                                        <barButtonItem key="leftBarButtonItem" title="Discard" id="7fm-Lp-DFC">
-                                            <connections>
-                                                <action selector="discardReview:" destination="8ma-qZ-8VO" id="cBh-f2-Pdy"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Submit" id="Pwf-qd-TLZ">
-                                            <connections>
-                                                <action selector="submitMinutes:" destination="8ma-qZ-8VO" id="Z9e-tM-0Oe"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How quickly did you fall asleep?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="1" translatesAutoresizingMaskIntoConstraints="NO" id="AdB-8v-alV">
                                 <rect key="frame" x="16" y="388" width="568" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
@@ -347,6 +337,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voE-PY-C5i">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Review" id="IY6-jn-rS4">
+                                        <barButtonItem key="leftBarButtonItem" title="Discard" id="7fm-Lp-DFC">
+                                            <connections>
+                                                <action selector="discardReview:" destination="8ma-qZ-8VO" id="cBh-f2-Pdy"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Submit" id="Pwf-qd-TLZ">
+                                            <connections>
+                                                <action selector="submitMinutes:" destination="8ma-qZ-8VO" id="Z9e-tM-0Oe"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -399,7 +411,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8E-pq-94E" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="V6J-u9-IGH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1041" y="594"/>
+            <point key="canvasLocation" x="1009" y="953"/>
         </scene>
         <!--Health Kit Error-->
         <scene sceneID="SOg-OK-0Y5">
@@ -443,7 +455,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MlP-BP-ZH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="axa-Te-IGC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="321" y="977"/>
+            <point key="canvasLocation" x="321" y="953"/>
         </scene>
     </scenes>
 </document>

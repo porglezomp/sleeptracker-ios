@@ -126,6 +126,7 @@ class ViewController: UIViewController, SleepReviewResponder, BedViewDelegate {
         }
     }
     
+    /// Update the GUI (button names and status labels)
     func updateStatus() {
         // Save the values in UserDefaults so they'll remain
         //  even if the user closes the app
