@@ -17,6 +17,18 @@ class ReviewSleepViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var submitButton: UIBarButtonItem!
     @IBOutlet weak var discardButton: UIBarButtonItem!
     @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak var sleepDurationLabel: UILabel!
+    
+    var newStartTimeAsleep: NSDate {
+        get {
+            let time = delegate.startTimeAsleep!.dateByAddingTimeInterval(NSTimeInterval(minutes*60))
+            // If it goes too far, clip it to the end time so we don't get an error
+            if time.timeIntervalSince1970 > delegate.endTimeAsleep!.timeIntervalSince1970 {
+                return delegate.endTimeAsleep!
+            }
+            return time
+        }
+    }
     
     // How quickly did you fall asleep?
     let names = [
@@ -49,22 +61,38 @@ class ReviewSleepViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         minutes = values[row]
-        println("\(minutes)")
+        updateLabel()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.selectRow(3, inComponent: 0, animated: false)
+        updateLabel()
+    }
+    
+    func updateLabel() {
+        func formatInterval(interval: NSTimeInterval) -> String {
+            let hours = Int(interval / 3600)
+            let hoursPlural = hours != 1 ? "s" : ""
+            let minutes = Int((interval / 60) % 60)
+            let minutesPlural = minutes != 1 ? "s" : ""
+            let seconds  = Int(interval % 60)
+            let secondsPlural = seconds != 1 ? "s" : ""
+            if hours > 0 {
+                return "\(hours) hour\(hoursPlural) \(minutes) minute\(minutesPlural)"
+            } else if minutes > 0 {
+                return "\(minutes) minute\(minutesPlural)"
+            } else {
+                return "\(seconds) second\(secondsPlural)"
+            }
+        }
+        
+        sleepDurationLabel.text = formatInterval(delegate.endTimeAsleep!.timeIntervalSinceDate(self.newStartTimeAsleep))
     }
     
     @IBAction func submitMinutes(sender: AnyObject) {
-        // Add the estimated time to fall asleep to the time the button was pressed
-        delegate.startTimeAsleep = delegate.startTimeAsleep?.dateByAddingTimeInterval(NSTimeInterval(minutes) * 60.0)
-        if delegate.startTimeAsleep?.timeIntervalSince1970 > delegate.endTimeAsleep?.timeIntervalSince1970 {
-            // If it goes too far, clip it to the end time so we don't get an error
-            delegate.startTimeAsleep = delegate?.endTimeAsleep
-        }
         println("\(minutes)")
+        delegate.startTimeAsleep = newStartTimeAsleep
         self.performSegueWithIdentifier("returnFromSleepReview", sender: self)
     }
     

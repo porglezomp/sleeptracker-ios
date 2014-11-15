@@ -9,13 +9,14 @@
 import UIKit
 import HealthKit
 
-class ViewController: UIViewController, SleepReviewResponder {
+class ViewController: UIViewController, SleepReviewResponder, BedViewDelegate {
     var defaults: NSUserDefaults!
     var inBed = false
     var asleep = false
     var startTimeInBed: NSDate?
     var startTimeAsleep: NSDate?
     var endTimeAsleep: NSDate?
+    var endTimeInBed: NSDate?
     var healthKitStore: HKHealthStore?
     weak var healthkitErrorViewController: ErrorViewController!
     lazy var categoryType: HKObjectType = { HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis) }()
@@ -80,46 +81,21 @@ class ViewController: UIViewController, SleepReviewResponder {
         } else if segue.identifier == "reviewSleepSegue" {
             let vc = segue.destinationViewController as ReviewSleepViewController
             vc.delegate = self
+        } else if segue.identifier == "reviewBedSegue" {
+            let vc = segue.destinationViewController as ReviewBedViewController
+            vc.delegate = self
         }
     }
     
-    @IBAction func returnFromError(segue: UIStoryboardSegue) {
-        healthkitErrorViewController = nil
-    }
-    
-    @IBAction func returnFromSleepReview(segue: UIStoryboardSegue) {
-        let sample = HKCategorySample(
-            type: HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis),
-            value: HKCategoryValueSleepAnalysis.Asleep.rawValue,
-            startDate: startTimeAsleep,
-            endDate: endTimeAsleep
-        )
-        saveSample(sample)
-    }
-    
-    @IBAction func discardSleepReview(segue: UIStoryboardSegue) {
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     @IBAction func toggleInBed(sender: AnyObject) {
         if self.inBed {
             // The user is getting out of bed
             inBed = false
             // Save the data
-            let end = NSDate()
-            let start = startTimeInBed!
-            let sample = HKCategorySample(
-                type: HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis),
-                value: HKCategoryValueSleepAnalysis.InBed.rawValue,
-                startDate: start,
-                endDate: end
-            )
-            
-            saveSample(sample)
+            endTimeInBed = NSDate()
+            self.performSegueWithIdentifier("reviewBedSegue", sender: self)
         } else {
             // The user has gotten into bed
             inBed = true
@@ -145,7 +121,7 @@ class ViewController: UIViewController, SleepReviewResponder {
     func saveSample(sample: HKCategorySample) {
         if (healthKitStore != nil) {
             if healthKitStore!.authorizationStatusForType(categoryType) == HKAuthorizationStatus.SharingAuthorized {
-                self.healthKitStore?.saveObject(sample, withCompletion: { (success: Bool, error: NSError!) -> Void in Void() })
+                self.healthKitStore?.saveObject(sample, withCompletion: { (success: Bool, error: NSError!) -> Void in println("Saved sample") })
             }
         }
     }
@@ -165,6 +141,40 @@ class ViewController: UIViewController, SleepReviewResponder {
         sleepButton.setTitle(asleep ? "Wake up" : "Sleep", forState: UIControlState.Normal)
         bedButton.setTitle(inBed ? "Get up" : "Get in bed", forState: UIControlState.Normal)
         
+    }
+    
+// MARK: - Rewind segues
+    
+    @IBAction func returnFromError(segue: UIStoryboardSegue) {
+        healthkitErrorViewController = nil
+    }
+    
+    @IBAction func returnFromSleepReview(segue: UIStoryboardSegue) {
+        let sample = HKCategorySample(
+            type: HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis),
+            value: HKCategoryValueSleepAnalysis.Asleep.rawValue,
+            startDate: startTimeAsleep,
+            endDate: endTimeAsleep
+        )
+        saveSample(sample)
+    }
+    
+    @IBAction func submitBedReview(segue: UIStoryboardSegue) {
+        let sample = HKCategorySample(
+            type: HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis),
+            value: HKCategoryValueSleepAnalysis.InBed.rawValue,
+            startDate: startTimeInBed,
+            endDate: endTimeInBed
+        )
+        saveSample(sample)
+    }
+    
+    @IBAction func discardReview(segue: UIStoryboardSegue) {
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }
 
