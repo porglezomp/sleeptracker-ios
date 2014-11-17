@@ -30,7 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3C14B80E1A12FF9D009F6F30 /* Sleep Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sleep Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C14B80E1A12FF9D009F6F30 /* Counting Sleep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Counting Sleep.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C14B8121A12FF9D009F6F30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C14B8131A12FF9D009F6F30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C14B8151A12FF9D009F6F30 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		3C14B80F1A12FF9D009F6F30 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3C14B80E1A12FF9D009F6F30 /* Sleep Tracker.app */,
+				3C14B80E1A12FF9D009F6F30 /* Counting Sleep.app */,
 				3C14B8231A12FF9D009F6F30 /* Sleep TrackerTests.xctest */,
 			);
 			name = Products;
@@ -144,7 +144,7 @@
 			);
 			name = "Sleep Tracker";
 			productName = "Sleep Tracker";
-			productReference = 3C14B80E1A12FF9D009F6F30 /* Sleep Tracker.app */;
+			productReference = 3C14B80E1A12FF9D009F6F30 /* Counting Sleep.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3C14B8221A12FF9D009F6F30 /* Sleep TrackerTests */ = {
@@ -366,7 +366,7 @@
 				INFOPLIST_FILE = "Sleep Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Counting Sleep";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -382,7 +382,7 @@
 				INFOPLIST_FILE = "Sleep Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Counting Sleep";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
