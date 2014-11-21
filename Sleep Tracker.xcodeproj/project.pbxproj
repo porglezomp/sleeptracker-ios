@@ -16,6 +16,7 @@
 		3C14B8351A12FFB0009F6F30 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C14B8341A12FFB0009F6F30 /* HealthKit.framework */; };
 		3C2DFEAA1A1447FB005DE22D /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DFEA91A1447FB005DE22D /* ErrorViewController.swift */; };
 		3C2DFEAC1A1457DB005DE22D /* ReviewSleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DFEAB1A1457DB005DE22D /* ReviewSleepViewController.swift */; };
+		3CBA293F1A1FED7200FBACA3 /* MissingHealthKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBA293E1A1FED7200FBACA3 /* MissingHealthKitViewController.swift */; };
 		3CD7FFB11A17356600E37D51 /* ReviewBedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD7FFB01A17356600E37D51 /* ReviewBedViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,13 +38,14 @@
 		3C14B8181A12FF9D009F6F30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C14B81A1A12FF9D009F6F30 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3C14B81D1A12FF9D009F6F30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		3C14B8231A12FF9D009F6F30 /* Sleep TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sleep TrackerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C14B8231A12FF9D009F6F30 /* Counting SleepTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Counting SleepTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C14B8281A12FF9D009F6F30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C14B8291A12FF9D009F6F30 /* Sleep_TrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sleep_TrackerTests.swift; sourceTree = "<group>"; };
 		3C14B8331A12FFB0009F6F30 /* Sleep Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Sleep Tracker.entitlements"; sourceTree = "<group>"; };
 		3C14B8341A12FFB0009F6F30 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		3C2DFEA91A1447FB005DE22D /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		3C2DFEAB1A1457DB005DE22D /* ReviewSleepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewSleepViewController.swift; path = ../ReviewSleepViewController.swift; sourceTree = "<group>"; };
+		3CBA293E1A1FED7200FBACA3 /* MissingHealthKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingHealthKitViewController.swift; sourceTree = "<group>"; };
 		3CD7FFB01A17356600E37D51 /* ReviewBedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewBedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,7 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				3C14B80E1A12FF9D009F6F30 /* Counting Sleep.app */,
-				3C14B8231A12FF9D009F6F30 /* Sleep TrackerTests.xctest */,
+				3C14B8231A12FF9D009F6F30 /* Counting SleepTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +97,7 @@
 				3C14B8151A12FF9D009F6F30 /* ViewController.swift */,
 				3C14B8171A12FF9D009F6F30 /* Main.storyboard */,
 				3C2DFEA91A1447FB005DE22D /* ErrorViewController.swift */,
+				3CBA293E1A1FED7200FBACA3 /* MissingHealthKitViewController.swift */,
 				3C14B81A1A12FF9D009F6F30 /* Images.xcassets */,
 				3C14B81C1A12FF9D009F6F30 /* LaunchScreen.xib */,
 				3C14B8111A12FF9D009F6F30 /* Supporting Files */,
@@ -130,9 +133,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3C14B80D1A12FF9D009F6F30 /* Sleep Tracker */ = {
+		3C14B80D1A12FF9D009F6F30 /* Counting Sleep */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3C14B82D1A12FF9D009F6F30 /* Build configuration list for PBXNativeTarget "Sleep Tracker" */;
+			buildConfigurationList = 3C14B82D1A12FF9D009F6F30 /* Build configuration list for PBXNativeTarget "Counting Sleep" */;
 			buildPhases = (
 				3C14B80A1A12FF9D009F6F30 /* Sources */,
 				3C14B80B1A12FF9D009F6F30 /* Frameworks */,
@@ -142,14 +145,14 @@
 			);
 			dependencies = (
 			);
-			name = "Sleep Tracker";
+			name = "Counting Sleep";
 			productName = "Sleep Tracker";
 			productReference = 3C14B80E1A12FF9D009F6F30 /* Counting Sleep.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3C14B8221A12FF9D009F6F30 /* Sleep TrackerTests */ = {
+		3C14B8221A12FF9D009F6F30 /* Counting SleepTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3C14B8301A12FF9D009F6F30 /* Build configuration list for PBXNativeTarget "Sleep TrackerTests" */;
+			buildConfigurationList = 3C14B8301A12FF9D009F6F30 /* Build configuration list for PBXNativeTarget "Counting SleepTests" */;
 			buildPhases = (
 				3C14B81F1A12FF9D009F6F30 /* Sources */,
 				3C14B8201A12FF9D009F6F30 /* Frameworks */,
@@ -160,9 +163,9 @@
 			dependencies = (
 				3C14B8251A12FF9D009F6F30 /* PBXTargetDependency */,
 			);
-			name = "Sleep TrackerTests";
+			name = "Counting SleepTests";
 			productName = "Sleep TrackerTests";
-			productReference = 3C14B8231A12FF9D009F6F30 /* Sleep TrackerTests.xctest */;
+			productReference = 3C14B8231A12FF9D009F6F30 /* Counting SleepTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -202,8 +205,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3C14B80D1A12FF9D009F6F30 /* Sleep Tracker */,
-				3C14B8221A12FF9D009F6F30 /* Sleep TrackerTests */,
+				3C14B80D1A12FF9D009F6F30 /* Counting Sleep */,
+				3C14B8221A12FF9D009F6F30 /* Counting SleepTests */,
 			);
 		};
 /* End PBXProject section */
@@ -237,6 +240,7 @@
 				3C2DFEAC1A1457DB005DE22D /* ReviewSleepViewController.swift in Sources */,
 				3C2DFEAA1A1447FB005DE22D /* ErrorViewController.swift in Sources */,
 				3C14B8141A12FF9D009F6F30 /* AppDelegate.swift in Sources */,
+				3CBA293F1A1FED7200FBACA3 /* MissingHealthKitViewController.swift in Sources */,
 				3CD7FFB11A17356600E37D51 /* ReviewBedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,7 +258,7 @@
 /* Begin PBXTargetDependency section */
 		3C14B8251A12FF9D009F6F30 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3C14B80D1A12FF9D009F6F30 /* Sleep Tracker */;
+			target = 3C14B80D1A12FF9D009F6F30 /* Counting Sleep */;
 			targetProxy = 3C14B8241A12FF9D009F6F30 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -391,7 +395,6 @@
 		3C14B8311A12FF9D009F6F30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -403,14 +406,13 @@
 				INFOPLIST_FILE = "Sleep TrackerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sleep Tracker.app/Sleep Tracker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Counting Sleep.app/Counting Sleep";
 			};
 			name = Debug;
 		};
 		3C14B8321A12FF9D009F6F30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -418,7 +420,7 @@
 				INFOPLIST_FILE = "Sleep TrackerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sleep Tracker.app/Sleep Tracker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Counting Sleep.app/Counting Sleep";
 			};
 			name = Release;
 		};
@@ -434,7 +436,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3C14B82D1A12FF9D009F6F30 /* Build configuration list for PBXNativeTarget "Sleep Tracker" */ = {
+		3C14B82D1A12FF9D009F6F30 /* Build configuration list for PBXNativeTarget "Counting Sleep" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3C14B82E1A12FF9D009F6F30 /* Debug */,
@@ -443,7 +445,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3C14B8301A12FF9D009F6F30 /* Build configuration list for PBXNativeTarget "Sleep TrackerTests" */ = {
+		3C14B8301A12FF9D009F6F30 /* Build configuration list for PBXNativeTarget "Counting SleepTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3C14B8311A12FF9D009F6F30 /* Debug */,

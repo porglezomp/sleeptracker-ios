@@ -19,6 +19,7 @@ class ViewController: UIViewController, SleepReviewResponder, BedViewDelegate {
     var endTimeInBed: NSDate?
     var healthKitStore: HKHealthStore?
     weak var healthkitErrorViewController: ErrorViewController!
+    weak var missingHealthKitViewController: MissingHealthKitViewController!
     lazy var categoryType: HKObjectType = { HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis) }()
     
     @IBOutlet weak var timeInBedLabel: UILabel!
@@ -55,6 +56,7 @@ class ViewController: UIViewController, SleepReviewResponder, BedViewDelegate {
                 })
         } else {
             println("Sorry, healthkit is unavailable!")
+            showErrorIfMissingHealthKit()
         }
         
         // This stores UserDefaults and updates the labels in the UI
@@ -64,13 +66,22 @@ class ViewController: UIViewController, SleepReviewResponder, BedViewDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         showErrorIfInvalid()
+        showErrorIfMissingHealthKit()
     }
     
     func showErrorIfInvalid() {
-        if healthKitStore!.authorizationStatusForType(categoryType) == HKAuthorizationStatus.SharingDenied {
+        if healthKitStore?.authorizationStatusForType(categoryType) == HKAuthorizationStatus.SharingDenied {
             self.performSegueWithIdentifier("errorSegue", sender: self)
         } else if healthkitErrorViewController? != nil {
             healthkitErrorViewController.performSegueWithIdentifier("returnFromError", sender: self)
+        }
+    }
+    
+    func showErrorIfMissingHealthKit() {
+        if healthKitStore? == nil {
+            self.performSegueWithIdentifier("missingSegue", sender: self)
+        } else if missingHealthKitViewController? != nil {
+            missingHealthKitViewController.performSegueWithIdentifier("returnFromError", sender: self)
         }
     }
     
@@ -84,6 +95,9 @@ class ViewController: UIViewController, SleepReviewResponder, BedViewDelegate {
         } else if segue.identifier == "reviewBedSegue" {
             let vc = segue.destinationViewController as ReviewBedViewController
             vc.delegate = self
+        } else if segue.identifier == "missingSegue" {
+            missingHealthKitViewController = segue.destinationViewController as MissingHealthKitViewController
+            missingHealthKitViewController.delegate = self
         }
     }
     
@@ -119,10 +133,8 @@ class ViewController: UIViewController, SleepReviewResponder, BedViewDelegate {
     }
     
     func saveSample(sample: HKCategorySample) {
-        if (healthKitStore != nil) {
-            if healthKitStore!.authorizationStatusForType(categoryType) == HKAuthorizationStatus.SharingAuthorized {
-                self.healthKitStore?.saveObject(sample, withCompletion: { (success: Bool, error: NSError!) -> Void in println("Saved sample") })
-            }
+        if healthKitStore?.authorizationStatusForType(categoryType) == HKAuthorizationStatus.SharingAuthorized {
+            self.healthKitStore?.saveObject(sample, withCompletion: { (success: Bool, error: NSError!) -> Void in println("Saved sample") })
         }
     }
     
@@ -148,6 +160,7 @@ class ViewController: UIViewController, SleepReviewResponder, BedViewDelegate {
     
     @IBAction func returnFromError(segue: UIStoryboardSegue) {
         healthkitErrorViewController = nil
+        missingHealthKitViewController = nil
     }
     
     @IBAction func returnFromSleepReview(segue: UIStoryboardSegue) {
